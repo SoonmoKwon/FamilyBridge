@@ -4,6 +4,7 @@ from core.models import Category
 
 class Activity (models.Model):
     team_member = models.ForeignKey(User)
+    description = models.CharField(max_length = 200)
     category = models.ForeignKey(Category)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
