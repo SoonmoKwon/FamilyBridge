@@ -6,11 +6,25 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from django.core.urlresolvers import reverse
+from django.test.client import Client
 
 
 class SimpleTest(TestCase):
-    def test_basic_addition(self):
+    def runTest(self):
+        pass
+
+    def setUp(self):
+        self.client = Client()
+
+    def test_loading_views(self):
         """
-        Tests that 1 + 1 always equals 2.
+        We are only testing GET request views
         """
-        self.assertEqual(1 + 1, 2)
+
+        self.client.get(reverse('calendar_home'))
+        self.client.get(reverse('calendar_add'))
+        self.client.get(reverse('calendar_activity_add'))
+        self.client.get(reverse('calendar_download'))
+        self.client.get(reverse('calendar_dayplan', kwargs = {'day': '03102013'}))
+        self.client.get(reverse('calendar_weekplan', kwargs = {'day': '03102013'}))
