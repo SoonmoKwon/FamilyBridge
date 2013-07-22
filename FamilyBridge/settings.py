@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'fbcalendar',
     'expense',
+    'core',
 )
 
 # A sample logging configuration. The only tangible logging
