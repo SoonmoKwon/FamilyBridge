@@ -5,5 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    Add content
+    <form action="{% url 'calendar_activity_add' %}" method = "post" class = "form-horizontal">
+        {% csrf_token %}
+        {{ form.as_table }} <br/>
+        <input type="submit" name="Save" value="전송" class="btn" />
+    </form>
 {% endblock %}

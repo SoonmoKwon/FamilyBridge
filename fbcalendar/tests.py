@@ -26,7 +26,7 @@ class SimpleTest(TestCase):
         We are only testing GET request views
         """
 
-        self.client.get(reverse('calendar_home'))
+        self.client.get(reverse('calendar_home')) # 주어진 url에서 제대로 동작하는지.
         self.client.get(reverse('calendar_add'))
         self.client.get(reverse('calendar_activity_add'))
         self.client.get(reverse('calendar_download'))
