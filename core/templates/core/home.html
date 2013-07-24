@@ -1,13 +1,74 @@
 {% extends "base.html" %}
 
-{% block login %}
-    <form action="{% url 'login' %}" method="post" class="form-horizontal">
-        {% if messages %}
-            <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    </form>
+{% block title %}
+    FamilyBridge Homepage
+{% endblock %}
+
+{% block content %}
+    <style>
+        .form-horizontal .control-label {
+            width: 70px;
+        }
+        .form-horizontal .controls {
+            margin-left: 80px;
+        }
+        .form-horizontal .button-right-align {
+           margin-left: 230px;
+        }
+    </style>
+    <div class="row">
+        <div class="span8"></div>
+        <div class="span4">
+            <form action="{% url 'login' %}" method = "post" class = "form-horizontal">
+                {% csrf_token %}
+                    <div class="control-group{% if login_form.username.error %} error{% endif %}">
+                    <label class="control-label" for="input_username" >Username:</label>
+                        <div class="controls">
+                            {{ login_form.username }}
+                            {% if login_form.username.error %}
+                            <span class="help-inline">{{ login_form.username.error }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="control-group{% if login_form.username.error %} error{% endif %}">
+                    <label class="control-label" for="input_username" >Password:</label>
+                        <div class="controls">
+                            {{ login_form.password }}
+                            {% if login_form.username.error %}
+                            <span class="help-inline">{{ login_form.username.error }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                <div class="button-right-align">
+                    <input type='submit' value='sign in' name="signin" class="btn" />
+                </div>
+            </form>
+            <form action="{% url 'signup' %}" method = "post" class = "form-horizontal">
+                {% csrf_token %}
+                 <div class="control-group{% if login_form.username.error %} error{% endif %}">
+                    <label class="control-label" for="input_username" >Username:</label>
+                        <div class="controls">
+                            {{ login_form.username }}
+                            {% if login_form.username.error %}
+                            <span class="help-inline">{{ login_form.username.error }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                 <div class="control-group{% if login_form.username.error %} error{% endif %}">
+                    <label class="control-label" for="input_username" >Password:</label>
+                        <div class="controls">
+                            {{ login_form.password }}
+                            {% if login_form.username.error %}
+                            <span class="help-inline">{{ login_form.username.error }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {{ signup_form.as_table }} <br/>
+                <div class="button-right-align">
+                    <input type='submit' value='sign up' name =" signup" class="btn" />
+                </div>
+            </form>
+        </div>
+    </div>
+
 {% endblock %}
