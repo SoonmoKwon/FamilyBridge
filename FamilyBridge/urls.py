@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'FamilyBridge.views.home', name='home'),
+    url(r'^', include('core.urls')),
     # url(r'^FamilyBridge/', include('FamilyBridge.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^calendar/', include('fbcalendar.urls')),
     url(r'^expense/', include('expense.urls')),
+    url(r'^home/', include('core.urls')),
 )

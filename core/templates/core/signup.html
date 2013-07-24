@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block login %}
+    <form action="{% url 'treat_signup' %}" method="post" class="form-horizontal">
+        {% csrf_token %}
+        <div class="control-group">
+            <div class="controls">
+               {{ form.as_table }}
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
