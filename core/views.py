@@ -10,6 +10,8 @@ from django.contrib import messages
 
 def home(request):
     data = {}
+    data['login_form'] = UserForm()
+    data['signup_form'] = SignUpForm()
     return render(request, 'core/home.html', data)
 
 def login(request):
