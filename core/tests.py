@@ -28,11 +28,11 @@ class SimpleTest(TestCase):
     def test_login_views(self):
 
         self.client.get(reverse('home'))
-        self.client.get(reverse('login'))
+        self.client.get(reverse('signin'))
         self.client.get(reverse('signup'))
         self.client.get(reverse('forgot_password'))
 
-    def test_login_model(self):
+    def test_signin_model(self):
 
         user1 = User(username='email')
         user1.set_password('helloworld')
@@ -45,16 +45,16 @@ class SimpleTest(TestCase):
         user2.save()
 
         #wrong username case
-        response1 = self.client.post(reverse('login'), {'username': 'email', 'password': 'helloworld'})
+        response1 = self.client.post(reverse('signin'), {'username': 'email', 'password': 'helloworld'})
         self.assertContains(response1, 'success')
-        response2 = self.client.post(reverse('login'), {'username': 'mail', 'password': 'helloworld'})
+        response2 = self.client.post(reverse('signin'), {'username': 'mail', 'password': 'helloworld'})
         self.assertContains(response2, 'Invalid username')
         #wrong password case
 
         # No need to check inactive user since they get automatically activated after authenticate
-        #response3 = self.client.post(reverse('login'), {'username': 'email2', 'password': 'helloworld'})
+        #response3 = self.client.post(reverse('signin'), {'username': 'email2', 'password': 'helloworld'})
         #self.assertContains(response3, 'Inactive User')
-        response4 = self.client.post(reverse('login'), {'username': 'email', 'password': 'hwlloworld'})
+        response4 = self.client.post(reverse('signin'), {'username': 'email', 'password': 'hwlloworld'})
         self.assertContains(response4, 'Invalid username')
 
 

@@ -5,28 +5,40 @@ from core.forms import UserForm
 from core.forms import SignUpForm
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 def home(request):
     data = {}
-    data['login_form'] = UserForm()
-    data['signup_form'] = SignUpForm()
+    if not request.user.is_authenticated():
+        data['login_form'] = UserForm()
+        data['signup_form'] = SignUpForm()
+    else:
+        return HttpResponseRedirect(reverse('expense_home'))
     return render(request, 'core/home.html', data)
 
-def login(request):
+def signin(request):
     data = {}
 
     if request.method == "POST":
         user = authenticate(username=request.POST["username"], password=request.POST['password'])
         if user is not None:
             if user.is_active:
+                login(request, user)
                 messages.success(request, 'success')
+                return HttpResponseRedirect(reverse('expense_home'))
             else:
                 messages.debug(request, 'Inactive User')
         else:
             messages.error(request, 'Invalid username')
+    data['login_form'] = UserForm(request.POST or None)
+    data['signup_form'] = SignUpForm(request.POST or None)
     return render(request, 'core/home.html', data)
+
+def signout(request):
+    data = {}
+    logout(request)
+    return HttpResponseRedirect(reverse('home'))
 
 def email_check(request):
     data = {}
