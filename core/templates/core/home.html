@@ -64,30 +64,30 @@
                             {% endif %}
                         </div>
                     </div>
-                    <div class="control-group{% if signup_form.password_again.error %} error{% endif %}">
+                    <div class="control-group{% if signup_form.password.error %} error{% endif %}">
                     <label class="control-label" for="input_password_again" >Password Again:</label>
                         <div class="controls">
-                            {{ signup_form.password_again }}
-                            {% if signup_form.password_again.error %}
-                            <span class="help-inline">{{ signup_form.password_again.error }}</span>
+                            {{ signup_form.password }}
+                            {% if signup_form.password.error %}
+                            <span class="help-inline">{{ signup_form.password.error }}</span>
                             {% endif %}
                         </div>
                     </div>
-                    <div class="control-group{% if signup_form.firstname.error %} error{% endif %}">
-                    <label class="control-label" for="input_firstname" >First name:</label>
+                    <div class="control-group{% if signup_form.first_name.error %} error{% endif %}">
+                    <label class="control-label" for="input_first_name" >First name:</label>
                         <div class="controls">
-                            {{ signup_form.firstname }}
-                            {% if signup_form.firstname.error %}
-                            <span class="help-inline">{{ signup_form.firstname.error }}</span>
+                            {{ signup_form.first_name }}
+                            {% if signup_form.first_name.error %}
+                            <span class="help-inline">{{ signup_form.first_name.error }}</span>
                             {% endif %}
                         </div>
                     </div>
-                    <div class="control-group{% if signup_form.lastname.error %} error{% endif %}">
+                    <div class="control-group{% if signup_form.last_name.error %} error{% endif %}">
                     <label class="control-label" for="input_lastname" >Last name:</label>
                         <div class="controls">
-                            {{ signup_form.lastname }}
-                            {% if signup_form.lastname.error %}
-                            <span class="help-inline">{{ signup_form.lastname.error }}</span>
+                            {{ signup_form.last_name }}
+                            {% if signup_form.last_name.error %}
+                            <span class="help-inline">{{ signup_form.last_name.error }}</span>
                             {% endif %}
                         </div>
                     </div>
