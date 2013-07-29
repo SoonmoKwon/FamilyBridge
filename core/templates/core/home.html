@@ -41,12 +41,12 @@
                             {% endif %}
                         </div>
                     </div>
-                    <div class="control-group{% if login_form.username.error %} error{% endif %}">
-                    <label class="control-label" for="input_username" >Password:</label>
+                    <div class="control-group{% if login_form.password.error %} error{% endif %}">
+                    <label class="control-label" for="input_password" >Password:</label>
                         <div class="controls">
                             {{ login_form.password }}
-                            {% if login_form.username.error %}
-                            <span class="help-inline">{{ login_form.username.error }}</span>
+                            {% if login_form.password.error %}
+                            <span class="help-inline">{{ login_form.password.error }}</span>
                             {% endif %}
                         </div>
                     </div>
@@ -74,12 +74,12 @@
                             {% endif %}
                         </div>
                     </div>
-                    <div class="control-group{% if signup_form.password.error %} error{% endif %}">
-                    <label class="control-label" for="input_password_again" >Password Again:</label>
+                    <div class="control-group{% if signup_form.password2.error %} error{% endif %}">
+                    <label class="control-label" for="input_password2" >Password Again:</label>
                         <div class="controls">
-                            {{ signup_form.password }}
-                            {% if signup_form.password.error %}
-                            <span class="help-inline">{{ signup_form.password.error }}</span>
+                            {{ signup_form.password2 }}
+                            {% if signup_form.password2.error %}
+                            <span class="help-inline">{{ signup_form.password2.error }}</span>
                             {% endif %}
                         </div>
                     </div>

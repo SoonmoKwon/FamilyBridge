@@ -61,4 +61,3 @@ class SimpleTest(TestCase):
     def test_signup_model(self):
 
         # signupuser = self.client.post(reverse('signup'), {'username': 'userss', 'password': 'newser','password2':'newser', 'first_name': 'soonmo', 'last_name': 'kwon', 'email': 'email@email.com'})
-
