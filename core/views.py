@@ -49,20 +49,29 @@ def email_check(request):
 
 def signup(request):
     data = {}
-    data['login'] = '0'
+    form = SignUpForm()
     if request.method == "POST":
-        if request.POST["password"] != request.POST["password2"]:
-            data['login'] = '1'
-            messages.error(request, 'Passwords are different')
-        if not (request.POST["email_check"]):
-            data['login'] = '1'
-            messages.error(request, 'Invalid Email')
-    if data['login'] == '0':
-        data['form'] = SignUpForm(request.POST)
-        if data['form'].is_valid():
-            data['form'].save()
-        else:
-            messages.error(request, 'Check Your Email')
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data["password"] == form.cleaned_data["password2"]:
+                user = form.save()
+                user.set_password(form.cleaned_data['password'])
+                user.save()
+                user = authenticate(username=form.cleaned_data["username"], password=form.cleaned_data['password'])
+                if user.is_active:
+                    login(request, user)
+                else:
+                    user.is_active = True
+                    user.save()
+                    login(request, user)
+                    messages.warning(request, "User has been automatically activated")
+                return HttpResponseRedirect(reverse('expense_home'))
+            else:
+                messages.error(request, 'Your passwords do not match')
+    print request.POST
+    print form
+    data['login_form'] = UserForm()
+    data['signup_form'] = form
     return render(request, 'core/home.html', data)
 
 def forgot_password(request):

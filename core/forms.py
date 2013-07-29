@@ -12,7 +12,7 @@ class UserForm(ModelForm):
 
 
 class SignUpForm(ModelForm):
-    password2 = forms.CharField(widget= PasswordInput)
+    password2 = forms.CharField(max_length = 30, widget= PasswordInput)
     class Meta:
         model = User
         fields = ['username','password','first_name','last_name','email']
