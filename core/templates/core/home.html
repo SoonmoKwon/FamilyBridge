@@ -5,18 +5,114 @@
 {% endblock %}
 
 {% block content %}
+    <div class = "row">
+       <div class="span12">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+       </div>
+    </div>
+    <style>
+        .form-horizontal .control-label {
+            width: 70px;
+        }
+        .form-horizontal .controls {
+            margin-left: 80px;
+        }
+        .form-horizontal .button-right-align {
+           margin-left: 230px;
+        }
+    </style>
     <div class="row">
         <div class="span8"></div>
-        <div class="span4 offset1">
-            <form action="{% url 'home' %}" method = "post" class = "form-horizontal">
+        <div class="span4">
+            <form action="{% url 'signin' %}" method = "post" class = "form-horizontal">
                 {% csrf_token %}
-                {{ loginform.as_table }} <br/>
-                <input type='submit' value='sign in' name="signin" class="btn" />
+                    <div class="control-group{% if login_form.username.error %} error{% endif %}">
+                    <label class="control-label" for="input_username" >Username:</label>
+                        <div class="controls">
+                            {{ login_form.username }}
+                            {% if login_form.username.error %}
+                            <span class="help-inline">{{ login_form.username.error }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="control-group{% if login_form.password.error %} error{% endif %}">
+                    <label class="control-label" for="input_password" >Password:</label>
+                        <div class="controls">
+                            {{ login_form.password }}
+                            {% if login_form.password.error %}
+                            <span class="help-inline">{{ login_form.password.error }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                <div class="button-right-align">
+                    <input type='submit' value='sign in' name="signin" class="btn" />
+                </div>
             </form>
-            <form action="{% url 'home' %}" method = "post" class = "form-horizontal">
+            <form action="{% url 'signup' %}" method = "post" class = "form-horizontal">
                 {% csrf_token %}
-                {{ signupform.as_table }} <br/>
-                <input type='submit' value='sign up' name =" signup" class="btn" />
+                    <div class="control-group{% if login_form.username.error %} error{% endif %}">
+                    <label class="control-label" for="input_username" >Username:</label>
+                        <div class="controls">
+                            {{ signup_form.username }}
+                            {% if login_form.username.error %}
+                            <span class="help-inline">{{ login_form.username.error }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="control-group{% if signup_form.password.error %} error{% endif %}">
+                    <label class="control-label" for="input_password" >Password:</label>
+                        <div class="controls">
+                            {{ signup_form.password }}
+                            {% if signup_form.password.error %}
+                            <span class="help-inline">{{ signup_form.password.error }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="control-group{% if signup_form.password2.error %} error{% endif %}">
+                    <label class="control-label" for="input_password2" >Password Again:</label>
+                        <div class="controls">
+                            {{ signup_form.password2 }}
+                            {% if signup_form.password2.error %}
+                            <span class="help-inline">{{ signup_form.password2.error }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="control-group{% if signup_form.first_name.error %} error{% endif %}">
+                    <label class="control-label" for="input_first_name" >First name:</label>
+                        <div class="controls">
+                            {{ signup_form.first_name }}
+                            {% if signup_form.first_name.error %}
+                            <span class="help-inline">{{ signup_form.first_name.error }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="control-group{% if signup_form.last_name.error %} error{% endif %}">
+                    <label class="control-label" for="input_lastname" >Last name:</label>
+                        <div class="controls">
+                            {{ signup_form.last_name }}
+                            {% if signup_form.last_name.error %}
+                            <span class="help-inline">{{ signup_form.last_name.error }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="control-group{% if signup_form.email.error %} error{% endif %}">
+                    <label class="control-label" for="input_email" >Email Address:</label>
+                        <div class="controls">
+                            {{ signup_form.email }}
+                            {% if signup_form.email.error %}
+                            <span class="help-inline">{{ signup_form.email.error }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                <div class="button-right-align">
+                    <input type='submit' value='sign up' name =" signup" class="btn" />
+                </div>
             </form>
         </div>
     </div>
