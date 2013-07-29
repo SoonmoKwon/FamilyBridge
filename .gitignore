@@ -19,6 +19,7 @@ local.properties
 *.sqlite3
 settings_local.py
 venv
+temp_email
 
 # External tool builders
 .externalToolBuilders/
