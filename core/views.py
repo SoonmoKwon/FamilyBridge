@@ -7,6 +7,10 @@ from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.template.loader import render_to_string
+from django.template import RequestContext
+from premailer import Premailer
+from django.core.mail import EmailMultiAlternatives
 
 def home(request):
     data = {}
@@ -65,6 +69,17 @@ def signup(request):
                     user.save()
                     login(request, user)
                     messages.warning(request, "User has been automatically activated")
+                title = 'Dear %s' % (user.first_name, )
+                contents = 'You can manage your care giving expenses through FamilyBridge'
+                html_msg = render_to_string("email/index.html", RequestContext(request,
+                    {'title': title, 'contents': contents }))
+
+                p = Premailer(html_msg)
+                html_msg = p.transform()
+
+                msg = EmailMultiAlternatives('Welcome to FamilyBridge', title+contents, 'asifiloveu@gmail.com', [user.email])
+                msg.attach_alternative(html_msg, 'text/html')
+                msg.send()
                 return HttpResponseRedirect(reverse('expense_home'))
             else:
                 messages.error(request, 'Your passwords do not match')

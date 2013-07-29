@@ -13,6 +13,7 @@ from django.test.client import RequestFactory
 from core.views import signup
 from django.contrib.sessions.models import Session
 from django.contrib.auth.models import AnonymousUser
+from django.core import mail
 
 
 class SimpleTest(TestCase):
@@ -85,3 +86,8 @@ class SimpleTest(TestCase):
         response1 = signup(request)
         self.assertEquals(response1.status_code, 302)
         """
+
+
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].to, ['email@email.com'])
+

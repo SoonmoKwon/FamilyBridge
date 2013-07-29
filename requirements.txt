@@ -1,3 +1,4 @@
 Django==1.5.1
 distribute==0.6.27
 psycopg2
+premailer==1.2.2
