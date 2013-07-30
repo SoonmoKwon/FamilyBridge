@@ -74,8 +74,8 @@ def signup(request):
                 html_msg = render_to_string("email/index.html", RequestContext(request,
                     {'title': title, 'contents': contents }))
 
-                p = Premailer(html_msg)
-                html_msg = p.transform()
+                #p = Premailer(html_msg)
+                #html_msg = p.transform()
 
                 msg = EmailMultiAlternatives('Welcome to FamilyBridge', title+contents, 'asifiloveu@gmail.com', [user.email])
                 msg.attach_alternative(html_msg, 'text/html')
