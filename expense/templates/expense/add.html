@@ -4,6 +4,9 @@
     Add activity
 {% endblock %}
 
+{% block additional_styles %}
+{% endblock %}
+
 {% block content %}
     <form action = "{% url 'expense_add' %}" method='post' class='form=horizontal'>
         {% csrf_token %}

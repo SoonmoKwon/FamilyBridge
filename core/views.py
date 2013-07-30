@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.template.loader import render_to_string
 from django.template import RequestContext
-from premailer import Premailer
+#from premailer import Premailer
 from django.core.mail import EmailMultiAlternatives
 
 def home(request):

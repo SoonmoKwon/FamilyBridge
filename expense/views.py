@@ -60,4 +60,8 @@ def filter_by_teammate_name(request, teammate_name):
                   
 def filter_by_teammate_id(request, teammate_id):
     data = {}
-    return render(request, 'expense/home.html', data)    
+    return render(request, 'expense/home.html', data)
+
+def piechart(request):
+    data = {}
+    return render(request, 'expense/expense_piechart.html', data)
