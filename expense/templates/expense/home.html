@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Add activity
+    Expenses Home
 {% endblock %}
 
 {% block content %}
+   <div class = "row">
+       <div class="span12">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+       </div>
+    </div>
     {% for i in items %}
         Activity Date {{ i.activity_date }}
         Team member{{ i.team_member }}
