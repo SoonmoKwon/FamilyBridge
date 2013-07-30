@@ -11,14 +11,38 @@
 {% endblock %}
 
 {% block content %}
-    <div id='container'>
-    <div id='center-container'>
-    <button class='btn' id="update">update</button>
-    <button class='btn' id='load' onclick='init();'>load chart</button>
-    <ul id='id-list'></ul>
-<div id='infovis'></div>
-    <div id='log'></div>
-    </div></div>
+    <div class='row'>
+        <div class='span3'>
+            <h1>Accounts</h1>
+
+            Tracking<br>
+            Collaborate<br>
+            Transactions<br>
+            Budgets
+        </div>
+        <div class='span9'>
+            <div class='row'>
+                <h1>Tracking</h1>
+
+                What is it?<br>
+                Macro view of spending<br>
+                Separated into categories: health care, living expense, housing, home care<br>
+                Visualizaition
+            </div>
+            <div class='row'>
+                <div id='container'>
+                    <div id='left-container'>
+                        <ul id='id-list'></ul>
+                        <button id='update' onclick='init();'>Update</button>
+                    </div>
+                    <div id='center-container'>
+                        <div id='infovis'></div>
+                        <div id='log'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block additional_scripts %}
