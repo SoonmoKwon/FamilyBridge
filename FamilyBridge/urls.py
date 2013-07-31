@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^calendar/', include('fbcalendar.urls')),
     url(r'^expense/', include('expense.urls')),
+    url(r'^mainpage/', include('mainpage.urls')),
 )

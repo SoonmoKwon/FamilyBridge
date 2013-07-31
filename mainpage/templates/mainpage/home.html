@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Welcome to FamilyBridge
+{% endblock %}
+
+{% block additional_styles %}
+    <style>
+        .img-size {
+            width:70px;
+            height:70px;
+        }
+        .img-font-size {
+            font-size: 20pt;
+        }
+        .calc-margin {
+            margin-top: 13px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+<body class="bgcolors">
+    <div class = "row">
+       <div class="span12">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+       </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-5">
+            <h2>Account</h2>
+                <div class="row">
+                    <botton type="botton" class="btn btn-large btn-primary img-font-size" disabled="disabled">
+                        <div class="col-lg-3">
+                            <img class="img-size" src = "{% static 'img/money.png' %}">
+                            &nbsp Cash
+                        </div>
+                        <div class="col-lg-2 col-offset-6 calc-margin">
+                            $123
+                        </div>
+                    </botton>
+                </div>
+        </div>
+    </div>
+        <div class="col-lg-7">
+            <h3>Family Feed</h3>
+        </div>
+    </div>
+
+
+
+</body>
+
+{% endblock %}

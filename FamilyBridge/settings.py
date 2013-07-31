@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'fbcalendar',
     'expense',
     'core',
+    'mainpage',
 )
 
 # A sample logging configuration. The only tangible logging

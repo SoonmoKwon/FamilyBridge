@@ -15,19 +15,52 @@
         <link rel="stylesheet" href="{% static 'html5/css/normalize.css' %}">
         <link rel="stylesheet" href="{% static 'html5/css/main.css' %}">
         <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel = 'stylesheet'>
+        <link href="{% static 'bootstrap3/css/bootstrap.min.css' %}" rel = 'stylesheet'>
         <script src="{% static 'html5/js/vendor/modernizr-2.6.2.min.js' %}"></script>
+        <link href='http://fonts.googleapis.com/css?family=Armata' rel='stylesheet' type='text/css'>
+
+        <style>
+            .top-menu-item {
+                font-family: 'Armata', sans-serif;
+            }
+            .top-menu-spacing {
+                margin-top: 40px;
+            }
+
+            .top-menu-align {
+                text-align: center;
+            }
+        </style>
         {% block additional_styles %}
         {% endblock %}
+
     </head>
+
     <body>
+
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
         <div class="container">
             <div class="row">
-                <div class="span12">
-                <img src = "{% static 'img/FBLogo.png' %}">
+                <div class="col-lg-3">
+                    <img src = "{% static 'img/FBLogo2.png' %}"></br>
+                    <center>Don’t run out of money #yolo</center>
                 </div>
+                <div class="col-lg-9 top-menu-align">
+                    <div class="top-menu-spacing">
+                        <ul class="nav nav-tabs">
+                            <li class="top-menu-item active"><a href="{% url 'mainpage_home' %}">Overview</a></li>
+                            <li class="top-menu-item"><a href="{% url 'mainpage_home' %}">Planing</a></li>
+                            <li class="top-menu-item"><a href="{% url 'mainpage_home' %}">Accounts</a></li>
+                            <li class="top-menu-item"><a href="{% url 'mainpage_home' %}">Messages</a></li>
+                            <li class="top-menu-item"><a href="{% url 'mainpage_home' %}">Documents</a></li>
+                            <li class="top-menu-item"><a href="{% url 'mainpage_home' %}">Blog</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
             </div>
 
             {% block login %}

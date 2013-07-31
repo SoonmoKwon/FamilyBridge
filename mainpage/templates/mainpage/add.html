@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Add activity
+{% endblock %}
+
+{% block additional_styles %}
+{% endblock %}
+
+{% block content %}
+    <form action = "{% url 'expense_add' %}" method='post' class='form=horizontal'>
+        {% csrf_token %}
+        {{ form.as_table }}
+    <input type = "submit" name = "save" value = 'save' class="btn">
+    </form>
+
+
+{% endblock %}
