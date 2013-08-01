@@ -1,1 +1,1 @@
-web: gunicorn FamilyBridge/wsgi.py
+web: gunicorn FamilyBridge.wsgi:application

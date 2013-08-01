@@ -2,7 +2,7 @@
 
 import os
 import dj_database_url
-
+DATABASES={}
 DATABASES['default'] = dj_database_url.config()
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
