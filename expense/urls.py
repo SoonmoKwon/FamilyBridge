@@ -15,6 +15,6 @@ urlpatterns = patterns('',
     url(r'^filter/(?P<category_id>[0-9]+)/$', 'expense.views.filter_by_category_id', name='expense_category_id_filter'),
     url(r'^filter/(?P<teammate_name>[a-z_0-9]+)/$', 'expense.views.filter_by_teammate_name', name='expense_teammate_name_filter'),
     url(r'^filter/(?P<teammate_id>[0-9]+)/$', 'expense.views.filter_by_teammate_id', name='expense_teammate_id_filter'),
-    url(r'^piechart', 'expense.views.piechart', name='expense_piechart')
+    url(r'^piechart', 'expense.views.piechart', name='expense_piechart'),
 
 )
